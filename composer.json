@@ -1,6 +1,6 @@
 {
     "name": "heimrichhannot/contao-companies",
-    "description":"A generic list module using formhybrid for filtering.",
+    "description":"A module adding company handling to Contao for members and users.",
     "keywords":["contao", "list", "form", "module", "developer"],
     "type": "contao-module",
     "homepage":"https://github.com/heimrichhannot/contao-companies",
