@@ -5,7 +5,7 @@ $arrLang = &$GLOBALS['TL_LANG']['tl_company'];
 /**
  * Fields
  */
-$arrLang['title'] = array('Title', 'Geben Sie den Titel der Firma ein');
+$arrLang['title'] = array('Titel', 'Geben Sie den Titel der Firma ein');
 $arrLang['street'] = array('Straße', 'Geben Sie den Straßennamen und die Hausnummer ein.');
 $arrLang['street2'] = array('Weitere Adressangaben', 'Geben Sie hier weitere Angaben zur Adresse ein.');
 $arrLang['postal'] = array('Postleitzahl', 'Geben Sie hier die Postleitzahl ein.');

@@ -197,12 +197,6 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 class tl_company extends \Backend
 {
 
-	public function listChildren($arrRow)
-	{die();
-		return '<div class="tl_content_left">' . $arrRow['title'] . ' <span style="color:#b3b3b3; padding-left:3px">[' .
-				\Date::parse(Config::get('datimFormat'), trim($arrRow['dateAdded'])) . ']</span></div>';
-	}
-
 	public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
 	{
 		$objUser = \BackendUser::getInstance();
