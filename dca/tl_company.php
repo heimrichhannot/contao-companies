@@ -84,7 +84,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 		)
 	),
 	'palettes' => array(
-		'default' => '{general_legend},title;{address_legend},street,street2,postal,city,state,country,coordinates;{publish_legend},published;'
+		'default' => '{general_legend},title,userEditors,memberEditors;{address_legend},street,street2,postal,city,state,country,coordinates;{publish_legend},published;'
 	),
 	'fields'   => array
 	(
@@ -127,6 +127,22 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 			'inputType'               => 'text',
 			'eval'                    => array('maxlength'=>255, 'tl_class' => 'w50', 'mandatory' => true),
 			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'memberEditors' => array
+		(
+			'label'   => &$GLOBALS['TL_LANG']['tl_company']['memberEditors'],
+			'inputType' => 'select',
+			'options_callback' => array('HeimrichHannot\Haste\Dca\General', 'getMembersAsOptions'),
+			'eval'    => array('multiple' => true, 'chosen' => true, 'tl_class' => 'w50'),
+			'sql'     => "blob NULL"
+		),
+		'userEditors' => array
+		(
+			'label'   => &$GLOBALS['TL_LANG']['tl_company']['userEditors'],
+			'inputType' => 'select',
+			'options_callback' => array('HeimrichHannot\Haste\Dca\General', 'getUsersAsOptions'),
+			'eval'    => array('multiple' => true, 'chosen' => true, 'tl_class' => 'w50 clr'),
+			'sql'     => "blob NULL"
 		),
 		'street' => array
 		(
@@ -269,6 +285,26 @@ class tl_company extends \Backend
 		}
 
 		return $varValue;
+	}
+
+	public static function getUsersAndMembersAsOptions()
+	{
+		$arrTables = array('tl_user', 'tl_member');
+		$arrOptions = array();
+		$objDatabase = \Database::getInstance();
+
+		foreach ($arrTables as $strTable)
+		{
+			$objObjects = $objDatabase->execute("SELECT id, firstname, lastname FROM $strTable");
+			if ($objObjects->numRows > 0)
+			{
+				//$arrOptions[]
+			}
+
+			asort($arrOptions);
+		}
+
+		return $arrOptions;
 	}
 
 }

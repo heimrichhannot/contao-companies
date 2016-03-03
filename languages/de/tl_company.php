@@ -6,6 +6,8 @@ $arrLang = &$GLOBALS['TL_LANG']['tl_company'];
  * Fields
  */
 $arrLang['title'] = array('Titel', 'Geben Sie den Titel der Firma ein');
+$arrLang['userEditors'] = array('Benutzerredakteure', 'Wählen Sie hier die Benutzer aus, die die Firma bearbeiten dürfen.');
+$arrLang['memberEditors'] = array('Mitgliederredakteure', 'Wählen Sie hier die Mitglieder aus, die die Firma bearbeiten dürfen. Die Logik für die Prüfung der Berechtigung muss im Frontend durch das Modul zur Frontend-Bearbeitung (bspw. <i>heimrichhannot/contao-frontendedit</i>) umgesetzt werden.');
 $arrLang['street'] = array('Straße', 'Geben Sie den Straßennamen und die Hausnummer ein.');
 $arrLang['street2'] = array('Weitere Adressangaben', 'Geben Sie hier weitere Angaben zur Adresse ein.');
 $arrLang['postal'] = array('Postleitzahl', 'Geben Sie hier die Postleitzahl ein.');
