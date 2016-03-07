@@ -17,7 +17,8 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 			(
 				'id' => 'primary'
 			)
-		)
+		),
+		'onload_callback'  => array(array('tl_company', 'initPalette')),
 	),
 	'list'     => array
 	(
@@ -84,7 +85,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 		)
 	),
 	'palettes' => array(
-		'default' => '{general_legend},title,userEditors,memberEditors;{address_legend},street,street2,postal,city,state,country,coordinates;{publish_legend},published;'
+		'default' => '{general_legend},title,userEditors,memberEditors;{address_legend},street,street2,postal,city,state,country,coordinates,phone,fax,email,website;{publish_legend},published;'
 	),
 	'fields'   => array
 	(
@@ -192,7 +193,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 			'sorting'   => true,
 			'inputType' => 'select',
 			'options'   => System::getCountries(),
-			'eval'      => array('includeBlankOption' => true, 'chosen' => true, 'tl_class' => 'w50'),
+			'eval'      => array('includeBlankOption' => true, 'chosen' => true, 'tl_class' => 'w50', 'submitOnChange' => true),
 			'sql'       => "varchar(2) NOT NULL default ''"
 		),
 		'coordinates' => array
@@ -206,12 +207,66 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 			'eval'      => array('maxlength' => 255, 'tl_class' => 'w50'),
 			'sql'       => "varchar(255) NOT NULL default ''"
 		),
+		'phone' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_company']['phone'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('maxlength'=>64, 'rgxp'=>'phone', 'decodeEntities'=>true, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(64) NOT NULL default ''"
+		),
+		'fax' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_company']['fax'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('maxlength'=>64, 'rgxp'=>'phone', 'decodeEntities'=>true, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(64) NOT NULL default ''"
+		),
+		'email' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_company']['email'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('maxlength'=>255, 'rgxp'=>'email', 'decodeEntities'=>true, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'website' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_company']['website'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('rgxp'=>'url', 'maxlength'=>255, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
 	)
 );
 
 
 class tl_company extends \Backend
 {
+	public static function initPalette()
+	{
+		$objCompany = \HeimrichHannot\Companies\CompanyModel::findByPk(\Input::get('id'));
+		$arrDca = &$GLOBALS['TL_DCA']['tl_company'];
+
+		switch ($objCompany->country)
+		{
+			case 'de':
+				$arrDca['fields']['state']['inputType'] = 'select';
+				$arrDca['fields']['state']['eval']['includeBlankOption'] = true;
+				$arrDca['fields']['state']['options'] = $GLOBALS['TL_LANG']['COUNTIES'][$objCompany->country];
+
+				asort($arrDca['fields']['state']['options']);
+				break;
+			default:
+				break;
+		}
+	}
 
 	public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
 	{

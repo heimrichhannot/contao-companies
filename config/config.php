@@ -11,5 +11,5 @@ $GLOBALS['BE_MOD']['accounts']['companies'] = array(
 /**
  * Models
  */
-$GLOBALS['TL_MODELS']['tl_company_archive'] = '\HeimichHannot\Companies\CompanyArchiveModel';
-$GLOBALS['TL_MODELS']['tl_company'] = '\HeimichHannot\Companies\CompanyModel';
+$GLOBALS['TL_MODELS']['tl_company_archive'] = '\HeimrichHannot\Companies\CompanyArchiveModel';
+$GLOBALS['TL_MODELS']['tl_company'] = '\HeimrichHannot\Companies\CompanyModel';

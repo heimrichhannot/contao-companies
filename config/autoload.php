@@ -14,7 +14,7 @@
  */
 ClassLoader::addNamespaces(array
 (
-	'HeimichHannot',
+	'HeimrichHannot',
 ));
 
 
@@ -23,7 +23,10 @@ ClassLoader::addNamespaces(array
  */
 ClassLoader::addClasses(array
 (
+	// Classes
+	'HeimrichHannot\Companies\Companies'           => 'system/modules/companies/classes/Companies.php',
+
 	// Models
-	'HeimichHannot\CalendarRooms\CalendarRoomArchiveModel' => 'system/modules/calendar_rooms/models/CalendarRoomArchiveModel.php',
-	'HeimichHannot\CalendarRooms\CalendarRoomModel'        => 'system/modules/calendar_rooms/models/CalendarRoomModel.php',
+	'HeimrichHannot\Companies\CompanyArchiveModel' => 'system/modules/companies/models/CompanyArchiveModel.php',
+	'HeimrichHannot\Companies\CompanyModel'        => 'system/modules/companies/models/CompanyModel.php',
 ));

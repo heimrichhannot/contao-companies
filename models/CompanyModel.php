@@ -1,6 +1,6 @@
 <?php
 
-namespace HeimichHannot\CalendarRooms;
+namespace HeimrichHannot\Companies;
 
 class CompanyModel extends \Model
 {

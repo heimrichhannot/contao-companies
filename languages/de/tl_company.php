@@ -15,6 +15,10 @@ $arrLang['city'] = array('Ort', 'Geben Sie hier einen Ort ein.');
 $arrLang['state'] = array('Bundesstaat/Bundesland', 'Bitte geben Sie den Namen des Bundesstaates/Bundeslandes ein.');
 $arrLang['country'] = array('Land', 'Wählen Sie hier ein Land aus.');
 $arrLang['coordinates'] = array('Koordinaten', 'Geben Sie hier die Koordinaten des Event-Orts in der Form "Latitude,Longitude" ein (ohne Anführungsstriche).');
+$arrLang['phone'] = array('Telefonnummer', 'Geben Sie hier eine Telefonnummer ein.');
+$arrLang['fax'] = array('Faxnummer', 'Geben Sie hier eine Faxnummer ein.');
+$arrLang['email'] = array('E-Mail-Adresse', 'Geben Sie hier eine E-Mail-Adresse ein.');
+$arrLang['website'] = array('Webseite', 'Geben Sie hier eine Webseite ein.');
 $arrLang['published'] = array('Veröffentlichen', 'Klicken Sie hier, um die Firma zu veröffentlichen.');
 
 /**
