@@ -85,7 +85,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 		)
 	),
 	'palettes' => array(
-		'default' => '{general_legend},title,userEditors,memberEditors;{address_legend},street,street2,postal,city,state,country,coordinates,phone,fax,email,website;{publish_legend},published;'
+		'default' => '{general_legend},title,userEditors,memberEditors,userContacts,memberContacts;{address_legend},street,street2,postal,city,state,country,coordinates,phone,fax,email,website;{publish_legend},published;'
 	),
 	'fields'   => array
 	(
@@ -140,6 +140,22 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 		'userEditors' => array
 		(
 			'label'   => &$GLOBALS['TL_LANG']['tl_company']['userEditors'],
+			'inputType' => 'select',
+			'options_callback' => array('HeimrichHannot\Haste\Dca\General', 'getUsersAsOptions'),
+			'eval'    => array('multiple' => true, 'chosen' => true, 'tl_class' => 'w50 clr'),
+			'sql'     => "blob NULL"
+		),
+		'memberContacts' => array
+		(
+			'label'   => &$GLOBALS['TL_LANG']['tl_company']['memberContacts'],
+			'inputType' => 'select',
+			'options_callback' => array('HeimrichHannot\Haste\Dca\General', 'getMembersAsOptions'),
+			'eval'    => array('multiple' => true, 'chosen' => true, 'tl_class' => 'w50'),
+			'sql'     => "blob NULL"
+		),
+		'userContacts' => array
+		(
+			'label'   => &$GLOBALS['TL_LANG']['tl_company']['userContacts'],
 			'inputType' => 'select',
 			'options_callback' => array('HeimrichHannot\Haste\Dca\General', 'getUsersAsOptions'),
 			'eval'    => array('multiple' => true, 'chosen' => true, 'tl_class' => 'w50 clr'),
@@ -202,7 +218,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 			'exclude'   => true,
 			'inputType' => 'text',
 			'save_callback' => array(
-				array('tl_company', 'setCoordinates')
+				array('HeimrichHannot\Haste\Dca\General', 'setCoordinatesForDc')
 			),
 			'eval'      => array('maxlength' => 255, 'tl_class' => 'w50'),
 			'sql'       => "varchar(255) NOT NULL default ''"
@@ -325,41 +341,6 @@ class tl_company extends \Backend
 
 		$objVersions->create();
 		\Controller::log('A new version of record "tl_company.id='.$intId.'" has been created'.$this->getParentEntries('tl_company', $intId), 'tl_company toggleVisibility()', TL_GENERAL);
-	}
-
-	public static function setCoordinates($varValue, $objDc)
-	{
-		$objMember = $objDc->activeRecord;
-
-		$strResult = file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($objMember->street . ' ' . $objMember->postal . ' ' . $objMember->city) . '&sensor=false');
-		$objResult = json_decode($strResult);
-
-		if (count($objResult->results) > 0 && is_array($objResult->results))
-		{
-			return $objResult->results[0]->geometry->location->lat . ',' . $objResult->results[0]->geometry->location->lng;
-		}
-
-		return $varValue;
-	}
-
-	public static function getUsersAndMembersAsOptions()
-	{
-		$arrTables = array('tl_user', 'tl_member');
-		$arrOptions = array();
-		$objDatabase = \Database::getInstance();
-
-		foreach ($arrTables as $strTable)
-		{
-			$objObjects = $objDatabase->execute("SELECT id, firstname, lastname FROM $strTable");
-			if ($objObjects->numRows > 0)
-			{
-				//$arrOptions[]
-			}
-
-			asort($arrOptions);
-		}
-
-		return $arrOptions;
 	}
 
 }
