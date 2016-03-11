@@ -165,6 +165,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 		(
 			'label'     => &$GLOBALS['TL_LANG']['tl_company']['street'],
 			'exclude'   => true,
+			'search'    => true,
 			'inputType' => 'text',
 			'eval'      => array('maxlength' => 255, 'tl_class' => 'w50'),
 			'sql'       => "varchar(255) NOT NULL default ''"
@@ -173,6 +174,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 		(
 			'label'     => &$GLOBALS['TL_LANG']['tl_company']['street2'],
 			'exclude'   => true,
+			'search'    => true,
 			'inputType' => 'text',
 			'eval'      => array('maxlength' => 255, 'tl_class' => 'w50'),
 			'sql'       => "varchar(255) NOT NULL default ''"
@@ -181,6 +183,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 		(
 			'label'     => &$GLOBALS['TL_LANG']['tl_company']['postal'],
 			'exclude'   => true,
+			'search'    => true,
 			'inputType' => 'text',
 			'eval'      => array('maxlength' => 255, 'tl_class' => 'w50'),
 			'sql'       => "varchar(255) NOT NULL default ''"
@@ -189,6 +192,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 		(
 			'label'     => &$GLOBALS['TL_LANG']['tl_company']['city'],
 			'exclude'   => true,
+			'search'    => true,
 			'inputType' => 'text',
 			'eval'      => array('maxlength' => 255, 'tl_class' => 'w50'),
 			'sql'       => "varchar(255) NOT NULL default ''"
@@ -196,6 +200,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 		'state' => array(
 			'label'     => &$GLOBALS['TL_LANG']['tl_company']['state'],
 			'exclude'   => true,
+			'filter'    => true,
 			'sorting'   => true,
 			'inputType' => 'text',
 			'eval'      => array('maxlength' => 255, 'tl_class' => 'w50'),
