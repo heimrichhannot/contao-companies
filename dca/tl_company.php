@@ -85,7 +85,13 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 		)
 	),
 	'palettes' => array(
-		'default' => '{general_legend},title,userEditors,memberEditors,userContacts,useMemberContacts,memberContacts;{address_legend},street,street2,postal,city,state,country,coordinates,phone,fax,email,website;{publish_legend},published;'
+		'__selector__' => array('addContacts', 'addMemberContacts', 'addMemberContacts'),
+		'default' => '{general_legend},title,userEditors,memberEditors;{address_legend},street,street2,postal,city,state,country,coordinates,phone,fax,email,website;{contact_legend},addContacts,addUserContacts,addMemberContacts;{publish_legend},published;'
+	),
+	'subpalettes' => array(
+		'addContacts' => '',
+		'addMemberContacts' => 'memberContacts',
+		'addUserContacts' => 'userContacts'
 	),
 	'fields'   => array
 	(
@@ -145,9 +151,18 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 			'eval'    => array('multiple' => true, 'chosen' => true, 'tl_class' => 'w50 clr'),
 			'sql'     => "blob NULL"
 		),
-		'useMemberContacts' => array
+		'addContacts' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_company']['useMemberContacts'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_company']['addContacts'],
+			'exclude'                 => true,
+			'filter'                  => true,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('tl_class'=>'w50 clr', 'submitOnChange' => true),
+			'sql'                     => "char(1) NOT NULL default '0'"
+		),
+		'addMemberContacts' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_company']['addMemberContacts'],
 			'exclude'                 => true,
 			'filter'                  => true,
 			'inputType'               => 'checkbox',
@@ -159,15 +174,24 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 			'label'   => &$GLOBALS['TL_LANG']['tl_company']['memberContacts'],
 			'inputType' => 'select',
 			'options_callback' => array('HeimrichHannot\Haste\Dca\General', 'getMembersAsOptions'),
-			'eval'    => array('multiple' => true, 'chosen' => true, 'tl_class' => 'w50'),
+			'eval'    => array('multiple' => true, 'chosen' => true, 'tl_class' => 'w50', 'mandatory' => true),
 			'sql'     => "blob NULL"
+		),
+		'addUserContacts' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_company']['addUserContacts'],
+			'exclude'                 => true,
+			'filter'                  => true,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('tl_class'=>'w50 clr', 'submitOnChange' => true),
+			'sql'                     => "char(1) NOT NULL default '0'"
 		),
 		'userContacts' => array
 		(
 			'label'   => &$GLOBALS['TL_LANG']['tl_company']['userContacts'],
 			'inputType' => 'select',
 			'options_callback' => array('HeimrichHannot\Haste\Dca\General', 'getUsersAsOptions'),
-			'eval'    => array('multiple' => true, 'chosen' => true, 'tl_class' => 'w50 clr'),
+			'eval'    => array('multiple' => true, 'chosen' => true, 'tl_class' => 'w50 clr', 'mandatory' => true),
 			'sql'     => "blob NULL"
 		),
 		'street' => array
@@ -298,15 +322,6 @@ class tl_company extends \Backend
 				break;
 			default:
 				break;
-		}
-
-		if (!$objCompany->useMemberContacts)
-		{
-			$arrDca['palettes']['default'] = str_replace('memberContacts,', '', $arrDca['palettes']['default']);
-		}
-		else
-		{
-			$arrDca['palettes']['default'] = preg_replace('@contact[^,]*,@', '', $arrDca['palettes']['default']);
 		}
 	}
 

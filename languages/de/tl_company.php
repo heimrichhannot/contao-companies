@@ -8,9 +8,11 @@ $arrLang = &$GLOBALS['TL_LANG']['tl_company'];
 $arrLang['title'] = array('Titel', 'Geben Sie den Titel der Firma ein');
 $arrLang['userEditors'] = array('Redakteure (Mitglied)', 'Wählen Sie hier die Benutzer aus, die die Firma bearbeiten dürfen.');
 $arrLang['memberEditors'] = array('Redakteure (Benutzer)', 'Wählen Sie hier die Mitglieder aus, die die Firma bearbeiten dürfen. Die Logik für die Prüfung der Berechtigung muss im Frontend durch das Modul zur Frontend-Bearbeitung (bspw. <i>heimrichhannot/contao-frontendedit</i>) umgesetzt werden.');
+$arrLang['addUserContacts'] = array('Ansprechpartner (Benutzer) hinzufügen', 'Wählen Sie diese Option, um der Firma Ansprechpartner hinzuzufügen, die Benutzer sind.');
 $arrLang['userContacts'] = array('Ansprechpartner (Benutzer)', 'Wählen Sie hier die Benutzer aus, die die Firma bearbeiten dürfen.');
-$arrLang['useMemberContacts'] = array('Ein Mitglied als Ansprechpartner verwenden', 'Wählen Sie diese Option, wenn es sich beim Ansprechpartner um ein Mitglied handelt.');
+$arrLang['addMemberContacts'] = array('Ansprechpartner (Mitglied) hinzufügen', 'Wählen Sie diese Option, um der Firma Ansprechpartner hinzuzufügen, die Mitglieder sind.');
 $arrLang['memberContacts'] = array('Ansprechpartner (Mitglied)', 'Wählen Sie hier die Mitglieder aus, die die Firma bearbeiten dürfen. Die Logik für die Prüfung der Berechtigung muss im Frontend durch das Modul zur Frontend-Bearbeitung (bspw. <i>heimrichhannot/contao-frontendedit</i>) umgesetzt werden.');
+$arrLang['addContacts'] = array('Ansprechpartner hinzufügen', 'Wählen Sie diese Option, um der Firma Ansprechpartner (Freitext) hinzuzufügen.');
 $arrLang['street'] = array('Straße', 'Geben Sie den Straßennamen und die Hausnummer ein.');
 $arrLang['street2'] = array('Weitere Adressangaben', 'Geben Sie hier weitere Angaben zur Adresse ein.');
 $arrLang['postal'] = array('Postleitzahl', 'Geben Sie hier die Postleitzahl ein.');
@@ -29,6 +31,7 @@ $arrLang['published'] = array('Veröffentlichen', 'Klicken Sie hier, um die Firm
  */
 $arrLang['general_legend'] = 'Allgemeines';
 $arrLang['address_legend'] = 'Adresse';
+$arrLang['contact_legend'] = 'Ansprechpartner';
 $arrLang['publish_legend'] = 'Veröffentlichung';
 
 /**
