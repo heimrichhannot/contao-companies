@@ -30,6 +30,7 @@ $arrLang['published'] = array('Veröffentlichen', 'Klicken Sie hier, um die Firm
  * Legends
  */
 $arrLang['general_legend'] = 'Allgemeines';
+$arrLang['editor_legend'] = 'Redakteure';
 $arrLang['address_legend'] = 'Adresse';
 $arrLang['contact_legend'] = 'Ansprechpartner';
 $arrLang['publish_legend'] = 'Veröffentlichung';

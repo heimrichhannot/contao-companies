@@ -86,7 +86,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 	),
 	'palettes' => array(
 		'__selector__' => array('addContacts', 'addMemberContacts', 'addMemberContacts'),
-		'default' => '{general_legend},title,userEditors,memberEditors;{address_legend},street,street2,postal,city,state,country,coordinates,phone,fax,email,website;{contact_legend},addContacts,addUserContacts,addMemberContacts;{publish_legend},published;'
+		'default' => '{general_legend},title;{editor_legend},userEditors,memberEditors;{address_legend},street,street2,postal,city,state,country,coordinates,phone,fax,email,website;{contact_legend},addContacts,addUserContacts,addMemberContacts;{publish_legend},published;'
 	),
 	'subpalettes' => array(
 		'addContacts' => '',
