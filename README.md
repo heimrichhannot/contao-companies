@@ -8,6 +8,10 @@ A module adding company handling to Contao for members and users.
 
 ## Features
 
+- adds a new company entity
+- support for both members and users
+- add member fields as contact person fields dynamically or just link a member as contact
+
 ### Fields
 
 tl_company:

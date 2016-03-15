@@ -85,7 +85,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 		)
 	),
 	'palettes' => array(
-		'default' => '{general_legend},title,userEditors,memberEditors,userContacts,memberContacts;{address_legend},street,street2,postal,city,state,country,coordinates,phone,fax,email,website;{publish_legend},published;'
+		'default' => '{general_legend},title,userEditors,memberEditors,userContacts,useMemberContacts,memberContacts;{address_legend},street,street2,postal,city,state,country,coordinates,phone,fax,email,website;{publish_legend},published;'
 	),
 	'fields'   => array
 	(
@@ -144,6 +144,15 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 			'options_callback' => array('HeimrichHannot\Haste\Dca\General', 'getUsersAsOptions'),
 			'eval'    => array('multiple' => true, 'chosen' => true, 'tl_class' => 'w50 clr'),
 			'sql'     => "blob NULL"
+		),
+		'useMemberContacts' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_company']['useMemberContacts'],
+			'exclude'                 => true,
+			'filter'                  => true,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('tl_class'=>'w50 clr', 'submitOnChange' => true),
+			'sql'                     => "char(1) NOT NULL default '0'"
 		),
 		'memberContacts' => array
 		(
@@ -267,6 +276,9 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 	)
 );
 
+// if not set, all fields are used
+\HeimrichHannot\Companies\Companies::importMemberFields();
+
 
 class tl_company extends \Backend
 {
@@ -286,6 +298,15 @@ class tl_company extends \Backend
 				break;
 			default:
 				break;
+		}
+
+		if (!$objCompany->useMemberContacts)
+		{
+			$arrDca['palettes']['default'] = str_replace('memberContacts,', '', $arrDca['palettes']['default']);
+		}
+		else
+		{
+			$arrDca['palettes']['default'] = preg_replace('@contact[^,]*,@', '', $arrDca['palettes']['default']);
 		}
 	}
 
