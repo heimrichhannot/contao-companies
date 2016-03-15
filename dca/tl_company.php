@@ -158,7 +158,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 			'filter'                  => true,
 			'inputType'               => 'checkbox',
 			'eval'                    => array('tl_class'=>'w50 clr', 'submitOnChange' => true),
-			'sql'                     => "char(1) NOT NULL default '0'"
+			'sql'                     => "char(1) NOT NULL default ''"
 		),
 		'addMemberContacts' => array
 		(
@@ -167,7 +167,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 			'filter'                  => true,
 			'inputType'               => 'checkbox',
 			'eval'                    => array('tl_class'=>'w50 clr', 'submitOnChange' => true),
-			'sql'                     => "char(1) NOT NULL default '0'"
+			'sql'                     => "char(1) NOT NULL default ''"
 		),
 		'memberContacts' => array
 		(
@@ -184,7 +184,7 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 			'filter'                  => true,
 			'inputType'               => 'checkbox',
 			'eval'                    => array('tl_class'=>'w50 clr', 'submitOnChange' => true),
-			'sql'                     => "char(1) NOT NULL default '0'"
+			'sql'                     => "char(1) NOT NULL default ''"
 		),
 		'userContacts' => array
 		(
