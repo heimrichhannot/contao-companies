@@ -11,7 +11,7 @@
 	<div class="duration">
 		<?= $this->duration ?> min.
 	</div>
-	<div class="partners" title="<?= $this->partners ?>>
+	<div class="partners" title="<?= $this->partners ?>">
 		<?= $this->partners ?>
 	</div>
 	<div class="description" title="<?= $this->description ?>">

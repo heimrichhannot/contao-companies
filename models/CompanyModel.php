@@ -14,10 +14,12 @@ class CompanyModel extends \Model
 
 	public static function getParsedActivities($intCompany)
 	{
+		$strResult = '';
+		\Controller::loadDataContainer('tl_company_activity');
+		\System::loadLanguageFile('tl_company_activity');
+
 		if (($objActivities = static::getActivities($intCompany)) !== null)
 		{
-			$strResult = '';
-
 			while ($objActivities->next())
 			{
 				$objTemplate = new \FrontendTemplate('company_activity_default');
@@ -26,6 +28,8 @@ class CompanyModel extends \Model
 				$strResult .= $objTemplate->parse();
 			}
 		}
+
+		return $strResult;
 	}
 
 }

@@ -23,17 +23,24 @@ $GLOBALS['TL_DCA']['tl_company_activity'] = array
 	(
 		'label' => array
 		(
-			'fields' => array('id'),
-			'format' => '%s'
+			'fields' => array('type', 'dateAdded'),
+			'format' => '%s (%s)'
 		),
 		'sorting'           => array
 		(
-			'mode'                  => 0,
+			'mode'                  => 1,
 			'fields'                => array('dateAdded'),
 			'panelLayout'           => 'filter;search,limit'
 		),
 		'global_operations' => array
 		(
+			'all'    => array
+			(
+				'label'      => &$GLOBALS['TL_LANG']['MSC']['all'],
+				'href'       => 'act=select',
+				'class'      => 'header_edit_all',
+				'attributes' => 'onclick="Backend.getScrollOffset();"'
+			),
 		),
 		'operations' => array
 		(
