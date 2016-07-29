@@ -1,0 +1,20 @@
+<div class="company-activity">
+	<div class="type">
+		<?= $GLOBALS['TL_LANG']['tl_company_activity']['typeOptions'][$this->type] ?>
+	</div>
+	<div class="medium">
+		<?= $GLOBALS['TL_LANG']['tl_company_activity']['mediumOptions'][$this->medium] ?>
+	</div>
+	<div class="date-time">
+		<?= date(\Config::get('datimFormat'), $this->dateTime) ?>
+	</div>
+	<div class="duration">
+		<?= $this->duration ?> min.
+	</div>
+	<div class="partners" title="<?= $this->partners ?>>
+		<?= $this->partners ?>
+	</div>
+	<div class="description" title="<?= $this->description ?>">
+		<?= $this->description ?>
+	</div>
+</div>

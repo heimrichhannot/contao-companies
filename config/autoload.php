@@ -23,10 +23,20 @@ ClassLoader::addNamespaces(array
  */
 ClassLoader::addClasses(array
 (
-	// Classes
-	'HeimrichHannot\Companies\Companies'           => 'system/modules/companies/classes/Companies.php',
-
 	// Models
+	'HeimrichHannot\Companies\ActivityModel'       => 'system/modules/companies/models/ActivityModel.php',
 	'HeimrichHannot\Companies\CompanyArchiveModel' => 'system/modules/companies/models/CompanyArchiveModel.php',
 	'HeimrichHannot\Companies\CompanyModel'        => 'system/modules/companies/models/CompanyModel.php',
+
+	// Classes
+	'HeimrichHannot\Companies\Companies'           => 'system/modules/companies/classes/Companies.php',
+));
+
+
+/**
+ * Register the templates
+ */
+TemplateLoader::addFiles(array
+(
+	'company_activity_default' => 'system/modules/companies/templates',
 ));

@@ -69,6 +69,12 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 				'icon'       => 'delete.gif',
 				'attributes' => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
 			),
+			'activities'   => array
+			(
+				'label' => &$GLOBALS['TL_LANG']['tl_company']['activities'],
+				'href'  => 'do=companies&table=tl_company_activity',
+				'icon'  => '/system/modules/companies/assets/img/icon_activities.png'
+			),
 			'toggle' => array
 			(
 				'label'           => &$GLOBALS['TL_LANG']['tl_company']['toggle'],

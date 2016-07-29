@@ -43,5 +43,6 @@ $arrLang['edit'] = array('Firma bearbeiten', 'Firma ID %s bearbeiten');
 $arrLang['copy'] = array('Firma duplizieren', 'Firma ID %s duplizieren');
 $arrLang['cut'] = array('Firma verschieben', 'Firma ID %s verschieben');
 $arrLang['delete'] = array('Firma löschen', 'Firma ID %s löschen');
+$arrLang['activities'] = array('Firmenaktivitäten', 'Aktivitäten der Firma ID %s anzeigen');
 $arrLang['toggle'] = array('Firma veröffentlichen', 'Firma ID %s veröffentlichen/verstecken');
 $arrLang['show'] = array('Firma-Details', 'Firma-Details ID %s anzeigen');
