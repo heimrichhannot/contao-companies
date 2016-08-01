@@ -7,10 +7,6 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 		'dataContainer'     => 'Table',
 		'ptable'            => 'tl_company_archive',
 		'enableVersioning'  => true,
-		'onsubmit_callback' => array
-		(
-			'setDateAdded' => array('HeimrichHannot\Haste\Dca\General', 'setDateAdded'),
-		),
 		'sql' => array
 		(
 			'keys' => array
@@ -18,7 +14,10 @@ $GLOBALS['TL_DCA']['tl_company'] = array
 				'id' => 'primary'
 			)
 		),
-		'onload_callback'  => array(array('tl_company', 'initPalette')),
+		'onload_callback'  => array(
+			array('tl_company', 'initPalette'),
+			array('HeimrichHannot\Haste\Dca\General', 'setDateAdded', true)
+		),
 	),
 	'list'     => array
 	(

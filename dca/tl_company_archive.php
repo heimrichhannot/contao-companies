@@ -7,9 +7,9 @@ $GLOBALS['TL_DCA']['tl_company_archive'] = array
 		'dataContainer'     => 'Table',
 		'ctable'            => array('tl_company'),
 		'enableVersioning'  => true,
-		'onsubmit_callback' => array
+		'onload_callback' => array
 		(
-			'setDateAdded' => array('HeimrichHannot\Haste\Dca\General', 'setDateAdded'),
+			'setDateAdded' => array('HeimrichHannot\Haste\Dca\General', 'setDateAdded', true),
 		),
 		'sql' => array
 		(

@@ -9,10 +9,12 @@ class CompanyModel extends \Model
 
 	public static function getActivities($intCompany)
 	{
-		return ActivityModel::findByPid($intCompany);
+		return ActivityModel::findBy(array('tl_company_activity.pid=?', 'tl_company_activity.tstamp>0'), array($intCompany), array(
+			'order' => 'tl_company_activity.dateTime DESC'
+		));
 	}
 
-	public static function getParsedActivities($intCompany)
+	public static function getParsedActivities($intCompany, \Module $objModule = null)
 	{
 		$strResult = '';
 		\Controller::loadDataContainer('tl_company_activity');
@@ -24,6 +26,7 @@ class CompanyModel extends \Model
 			{
 				$objTemplate = new \FrontendTemplate('company_activity_default');
 				$objTemplate->setData($objActivities->row());
+				$objTemplate->module = $objModule;
 
 				$strResult .= $objTemplate->parse();
 			}

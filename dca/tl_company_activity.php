@@ -7,9 +7,9 @@ $GLOBALS['TL_DCA']['tl_company_activity'] = array
 		'dataContainer'     => 'Table',
 		'ptable'            => 'tl_company',
 		'enableVersioning'  => true,
-		'onsubmit_callback' => array
+		'onload_callback' => array
 		(
-			array('HeimrichHannot\Haste\Dca\General', 'setDateAdded'),
+			array('HeimrichHannot\Haste\Dca\General', 'setDateAdded', true),
 		),
 		'sql' => array
 		(
@@ -73,7 +73,7 @@ $GLOBALS['TL_DCA']['tl_company_activity'] = array
 	),
 	'palettes' => array(
 		'__selector__' => array(),
-		'default' => 'type,medium,partners,dateTime,description,duration'
+		'default' => 'dateTime,type,medium,partners,description,duration'
 	),
 	'fields'   => array
 	(
@@ -100,6 +100,20 @@ $GLOBALS['TL_DCA']['tl_company_activity'] = array
 			'eval'                    => array('rgxp'=>'datim', 'doNotCopy' => true),
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
+		'dateTime' => array
+		(
+			'label'     => &$GLOBALS['TL_LANG']['tl_company_activity']['dateTime'],
+			'default'   => time(),
+			'exclude'   => true,
+			'filter'    => true,
+			'sorting'   => true,
+			'flag'      => 8,
+			'inputType' => 'text',
+			'eval'      => array('rgxp'     => 'datim', 'doNotCopy' => true,
+								 'mandatory' => true, 'tl_class' => 'w50 wizard'
+			),
+			'sql'       => "int(10) unsigned NOT NULL default '0'"
+		),
 		'type' => array(
 			'label'     => &$GLOBALS['TL_LANG']['tl_company_activity']['type'],
 			'exclude'   => true,
@@ -107,7 +121,7 @@ $GLOBALS['TL_DCA']['tl_company_activity'] = array
 			'inputType' => 'select',
 			'options'   => array('acquisition', 'customerCare', 'maintenance', 'other'),
 			'reference' => &$GLOBALS['TL_LANG']['tl_company_activity']['typeOptions'],
-			'eval'      => array('mandatory' => true, 'tl_class' => 'w50'),
+			'eval'      => array('mandatory' => true, 'tl_class' => 'w50 clr'),
 			'sql'       => "varchar(16) NOT NULL default ''"
 		),
 		'medium' => array(
@@ -119,20 +133,6 @@ $GLOBALS['TL_DCA']['tl_company_activity'] = array
 			'reference' => &$GLOBALS['TL_LANG']['tl_company_activity']['mediumOptions'],
 			'eval'      => array('mandatory' => true, 'tl_class' => 'w50'),
 			'sql'       => "varchar(16) NOT NULL default ''"
-		),
-		'dateTime' => array
-		(
-			'label'     => &$GLOBALS['TL_LANG']['tl_company_activity']['dateTime'],
-			'default'   => time(),
-			'exclude'   => true,
-			'filter'    => true,
-			'sorting'   => true,
-			'flag'      => 8,
-			'inputType' => 'text',
-			'eval'      => array('rgxp'     => 'datim', 'doNotCopy' => true, 'datepicker' => true,
-								 'mandatory' => true, 'tl_class' => 'w50 wizard'
-			),
-			'sql'       => "int(10) unsigned NOT NULL default '0'"
 		),
 		'duration' => array(
 			'label'     => &$GLOBALS['TL_LANG']['tl_company_activity']['duration'],
