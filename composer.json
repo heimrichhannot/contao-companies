@@ -4,7 +4,7 @@
     "keywords":["contao", "list", "form", "module", "developer"],
     "type": "contao-module",
     "homepage":"https://github.com/heimrichhannot/contao-companies",
-    "license":"LGPL-3.0+",
+    "license": "LGPL-3.0-or-later",
     "authors":[
         {
             "name":"Heimrich & Hannot",
@@ -17,7 +17,9 @@
         "issues":"https://github.com/heimrichhannot/contao-companies/issues"
     },
     "require": {
-        "contao/core": ">=3.2,<4-dev",
+        "php": "~5.4 || ~7.0",
+        "contao/core-bundle": "^3.5.1 || ~4.1",
+        "contao-community-alliance/composer-plugin": "~2.4 || ~3.0",
         "heimrichhannot/contao-haste_plus": ">=1.2.9"
     },
     "autoload": {
