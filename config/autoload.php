@@ -12,17 +12,17 @@
 /**
  * Register the namespaces
  */
-ClassLoader::addNamespaces(array
-(
+ClassLoader::addNamespaces(
+    [
 	'HeimrichHannot',
-));
+    ]);
 
 
 /**
  * Register the classes
  */
-ClassLoader::addClasses(array
-(
+ClassLoader::addClasses(
+    [
 	// Models
 	'HeimrichHannot\Companies\ActivityModel'       => 'system/modules/companies/models/ActivityModel.php',
 	'HeimrichHannot\Companies\CompanyArchiveModel' => 'system/modules/companies/models/CompanyArchiveModel.php',
@@ -30,13 +30,13 @@ ClassLoader::addClasses(array
 
 	// Classes
 	'HeimrichHannot\Companies\Companies'           => 'system/modules/companies/classes/Companies.php',
-));
+    ]);
 
 
 /**
  * Register the templates
  */
-TemplateLoader::addFiles(array
-(
+TemplateLoader::addFiles(
+    [
 	'company_activity_default' => 'system/modules/companies/templates',
-));
+    ]);

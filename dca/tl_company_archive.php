@@ -1,114 +1,114 @@
 <?php
 
-$GLOBALS['TL_DCA']['tl_company_archive'] = array
-(
-	'config'   => array
-	(
+$GLOBALS['TL_DCA']['tl_company_archive'] =
+    [
+	'config'   =>
+        [
 		'dataContainer'     => 'Table',
-		'ctable'            => array('tl_company'),
+		'ctable'            => ['tl_company'],
 		'enableVersioning'  => true,
-		'onload_callback' => array
-		(
-			'setDateAdded' => array('HeimrichHannot\Haste\Dca\General', 'setDateAdded', true),
-		),
-		'sql' => array
-		(
-			'keys' => array
-			(
+		'onload_callback' =>
+            [
+			'setDateAdded' => ['HeimrichHannot\Haste\Dca\General', 'setDateAdded', true],
+            ],
+		'sql' =>
+            [
+			'keys' =>
+                [
 				'id' => 'primary'
-			)
-		)
-	),
-	'list'     => array
-	(
-		'label' => array(
-			'fields' => array('title', 'id'),
-			'label_callback' => array('tl_company_archive', 'listRecords')
-		),
-		'sorting'           => array
-		(
+                ]
+            ]
+        ],
+	'list'     =>
+        [
+		'label' => [
+			'fields' => ['title', 'id'],
+			'label_callback' => ['tl_company_archive', 'listRecords']
+        ],
+		'sorting'           =>
+            [
 			'mode'                    => 1,
-			'fields'                  => array('title'),
+			'fields'                  => ['title'],
 			'flag'                    => 1,
 			'panelLayout'             => 'filter;search,limit'
-		),
-		'global_operations' => array
-		(
-			'all'    => array
-			(
+            ],
+		'global_operations' =>
+            [
+			'all'    =>
+                [
 				'label'      => &$GLOBALS['TL_LANG']['MSC']['all'],
 				'href'       => 'act=select',
 				'class'      => 'header_edit_all',
 				'attributes' => 'onclick="Backend.getScrollOffset();"'
-			),
-		),
-		'operations'        => array
-		(
-			'edit'   => array
-			(
+                ],
+            ],
+		'operations'        =>
+            [
+			'edit'   =>
+                [
 				'label' => &$GLOBALS['TL_LANG']['tl_company_archive']['edit'],
 				'href'  => 'do=companies&table=tl_company',
 				'icon'  => 'edit.gif'
-			),
-			'editheader' => array
-			(
+                ],
+			'editheader' =>
+                [
 				'label' => &$GLOBALS['TL_LANG']['tl_company_archive']['editheader'],
 				'href'  => 'act=edit',
 				'icon'  => 'header.gif'
-			),
-			'copy'   => array
-			(
+                ],
+			'copy'   =>
+                [
 				'label' => &$GLOBALS['TL_LANG']['tl_company_archive']['copy'],
 				'href'  => 'act=copy',
 				'icon'  => 'copy.gif'
-			),
-			'delete' => array
-			(
+                ],
+			'delete' =>
+                [
 				'label'      => &$GLOBALS['TL_LANG']['tl_company_archive']['delete'],
 				'href'       => 'act=delete',
 				'icon'       => 'delete.gif',
 				'attributes' => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
-			),
-			'show'   => array
-			(
+                ],
+			'show'   =>
+                [
 				'label' => &$GLOBALS['TL_LANG']['tl_company_archive']['show'],
 				'href'  => 'act=show',
 				'icon'  => 'show.gif'
-			),
-		)
-	),
-	'palettes' => array(
+                ],
+            ]
+        ],
+	'palettes' => [
 		'default' => 'title'
-	),
-	'fields'   => array
-	(
-		'id' => array
-		(
+    ],
+	'fields'   =>
+        [
+		'id' =>
+            [
 			'sql'                     => "int(10) unsigned NOT NULL auto_increment"
-		),
-		'tstamp' => array
-		(
+            ],
+		'tstamp' =>
+            [
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
-		),
-		'dateAdded' => array
-		(
+            ],
+		'dateAdded' =>
+            [
 			'label'                   => &$GLOBALS['TL_LANG']['MSC']['dateAdded'],
 			'sorting'                 => true,
 			'flag'                    => 6,
-			'eval'                    => array('rgxp'=>'datim', 'doNotCopy' => true),
+			'eval'                    => ['rgxp' =>'datim', 'doNotCopy' => true],
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
-		),
-		'title' => array
-		(
+            ],
+		'title' =>
+            [
 			'label'                   => &$GLOBALS['TL_LANG']['tl_company_archive']['title'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
-			'eval'                    => array('mandatory'=>true, 'maxlength'=>255),
+			'eval'                    => ['mandatory' =>true, 'maxlength' =>255],
 			'sql'                     => "varchar(255) NOT NULL default ''"
-		)
-	)
-);
+            ]
+        ]
+    ];
 
 
 class tl_company_archive extends \Backend

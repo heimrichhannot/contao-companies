@@ -3,10 +3,10 @@
 /**
 * Backend modules
 */
-$GLOBALS['BE_MOD']['accounts']['companies'] = array(
-	'tables' => array('tl_company_archive', 'tl_company', 'tl_company_activity'),
+$GLOBALS['BE_MOD']['accounts']['companies'] = [
+	'tables' => ['tl_company_archive', 'tl_company', 'tl_company_activity'],
 	'icon'   => 'system/modules/companies/assets/img/icon.png'
-);
+];
 
 /**
  * Models

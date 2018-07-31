@@ -9,9 +9,9 @@ class CompanyModel extends \Model
 
 	public static function getActivities($intCompany)
 	{
-		return ActivityModel::findBy(array('tl_company_activity.pid=?', 'tl_company_activity.tstamp>0'), array($intCompany), array(
+		return ActivityModel::findBy(['tl_company_activity.pid=?', 'tl_company_activity.tstamp>0'], [$intCompany], [
 			'order' => 'tl_company_activity.dateTime DESC'
-		));
+        ]);
 	}
 
 	public static function getParsedActivities($intCompany, \Module $objModule = null)

@@ -10,34 +10,34 @@ $arrDca['palettes']['default'] .= ';{companies_legend},companyMemberFields,compa
 /**
  * Subpalettes
  */
-$arrDca['palettes']['__selector__'][] = 'companyChangeMandatoryMemberFields';
+$arrDca['palettes']['__selector__'][]                        = 'companyChangeMandatoryMemberFields';
 $arrDca['subpalettes']['companyChangeMandatoryMemberFields'] = 'companyMandatoryMemberFields';
 
 /**
  * Fields
  */
-$arrDca['fields']['companyMemberFields'] = array
-(
-	'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['companyMemberFields'],
-	'exclude'                 => true,
-	'inputType'               => 'checkboxWizard',
-	'options_callback'        => array('HeimrichHannot\Companies\Companies', 'getMemberFields'),
-	'eval'                    => array('multiple'=>true, 'tl_class'=>'w50 clr')
-);
+$arrDca['fields']['companyMemberFields'] =
+    [
+        'label'            => &$GLOBALS['TL_LANG']['tl_settings']['companyMemberFields'],
+        'exclude'          => true,
+        'inputType'        => 'checkboxWizard',
+        'options_callback' => ['HeimrichHannot\Companies\Companies', 'getMemberFields'],
+        'eval'             => ['multiple' => true, 'tl_class' => 'w50 autoheight clr']
+    ];
 
-$arrDca['fields']['companyChangeMandatoryMemberFields'] = array
-(
-	'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['companyChangeMandatoryMemberFields'],
-	'exclude'                 => true,
-	'inputType'               => 'checkbox',
-	'eval'                    => array('tl_class' => 'w50', 'submitOnChange' => true)
-);
+$arrDca['fields']['companyChangeMandatoryMemberFields'] =
+    [
+        'label'     => &$GLOBALS['TL_LANG']['tl_settings']['companyChangeMandatoryMemberFields'],
+        'exclude'   => true,
+        'inputType' => 'checkbox',
+        'eval'      => ['tl_class' => 'w50 autoheight', 'submitOnChange' => true]
+    ];
 
-$arrDca['fields']['companyMandatoryMemberFields'] = array
-(
-	'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['companyMandatoryMemberFields'],
-	'exclude'                 => true,
-	'inputType'               => 'checkbox',
-	'options_callback'        => array('HeimrichHannot\Companies\Companies', 'getMemberFields'),
-	'eval'                    => array('multiple'=>true, 'tl_class'=>'w50 clr')
-);
+$arrDca['fields']['companyMandatoryMemberFields'] =
+    [
+        'label'            => &$GLOBALS['TL_LANG']['tl_settings']['companyMandatoryMemberFields'],
+        'exclude'          => true,
+        'inputType'        => 'checkbox',
+        'options_callback' => ['HeimrichHannot\Companies\Companies', 'getMemberFields'],
+        'eval'             => ['multiple' => true, 'tl_class' => 'w50 autoheight clr']
+    ];

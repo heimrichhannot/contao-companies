@@ -8,7 +8,7 @@ class Companies {
 
 	public static function getCompanyMembers()
 	{
-		$arrOptions = array();
+		$arrOptions = [];
 
 		if (($objMembers = \MemberModel::findByType('company')) !== null)
 		{
@@ -25,8 +25,8 @@ class Companies {
 		\Controller::loadDataContainer('tl_member');
 		\System::loadLanguageFile('tl_member');
 
-		$arrOptions = array();
-		$arrSkipFields = array('id', 'pid', 'tstamp', 'dateAdded');
+		$arrOptions = [];
+		$arrSkipFields = ['id', 'pid', 'tstamp', 'dateAdded'];
 
 		foreach ($GLOBALS['TL_DCA']['tl_member']['fields'] as $strName => $arrData) {
 			if (!in_array($strName, $arrSkipFields))
@@ -51,7 +51,7 @@ class Companies {
 		if ($arrAddressFields === null)
 			$arrAddressFields = serialize(array_keys(static::getMemberFields()));
 
-		$arrFields = array();
+		$arrFields = [];
 		foreach (deserialize($arrAddressFields, true) as $strName)
 		{
 			$strNameContact = 'contact' . ucfirst($strName);
